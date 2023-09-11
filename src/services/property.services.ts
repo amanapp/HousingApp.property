@@ -63,7 +63,6 @@ export async function showPropertyByUsingParametar(
   posted_by: any
 ): Promise<any> {
   try {
-    console.log("price :: ",price,"type :: ",type,"size::",size,"posted by :: ",posted_by)
 
     let pipeline = []
     if(price){
@@ -85,6 +84,13 @@ export async function showPropertyByUsingParametar(
       pipeline.push({
         '$match':{
           type:type
+        }
+      })
+    }
+    if(price){
+      pipeline.push({
+        '$match':{
+          posted_by: posted_by
         }
       })
     }
